@@ -2,18 +2,18 @@
 /**
  * Plugin Name: Legalease Answer
  * Plugin URL: https://legal500.com
- * Description: Legalese Answer Plugin for Legalease.com
+ * Description: Legalease Answer Plugin for Legalease.com
  * Author: Ryan Syntax
  * Author URI: https://ryansyntax.com
  * Version: 1.1
- * Text Domain: legalese-answer
+ * Text Domain: legalease-answer
  */
  
  if (!defined('ABSPATH')) {
  	exit;
  }
  
- class LegaleseAnswer {
+ class LegaleaseAnswer {
  
  	public function __construct() {
 		 // init main
@@ -171,9 +171,9 @@
 		add_action( 'edit_user_profile', 'legalese_answer_field');
 
 		/**
-	 	* legalese_answer_field
+	 	* legalease_answer_field
 	 	*
-	 	* Displays html form table for legalese_answer
+	 	* Displays html form table for legalease_answer
 	 	*
 	 	* @date	27/4/21
 	 	* @since	1.1
