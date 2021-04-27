@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Legalese Answer
+ * Plugin Name: Legalease Answer
  * Plugin URL: https://legal500.com
  * Description: Legalese Answer Plugin for Legalease.com
  * Author: Ryan Syntax
