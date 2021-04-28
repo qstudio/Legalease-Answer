@@ -5,10 +5,10 @@
  * Description: Legalese Answer Plugin for Legalease.com
  * Author: Ryan Syntax
  * Author URI: https://ryansyntax.com
- * Version: 1.1
+ * Version: 1.2
  * Text Domain: legalese-answer
  */
- 
+
  if (!defined('ABSPATH')) {
  	exit;
  }
@@ -16,9 +16,23 @@
  class LegaleseAnswer {
  
  	public function __construct() {
-		 // init main
-    	add_action('init', array($this, 'main'));
+		 // Do nothing
     }
+	/**
+	 * init
+	 *
+	 * Initialise
+	 *
+	 * @date	28/4/21
+	 * @since	1.2
+	 *
+	 * @param	void
+	 * @return	void
+	 */
+	public function init() {
+		//init main
+    	add_action('init', array($this, 'main'));
+	}
     /**
 	 * main
 	 *
@@ -31,6 +45,9 @@
 	 * @return	void
 	 */
     public function main() {
+		// Plugin activation hook
+		register_activation_hook( __FILE__, 'plugin_activate' );
+
 		// Check post data
 		$this->post_data_check();
 
@@ -42,7 +59,24 @@
 
 		// Pull in rest calls
 		$this->rest_api();
-    } 
+    }
+
+	/**
+	 * plugin_activate
+	 *
+	 * Actions that are performed when plugin is activated
+	 *
+	 * @date	28/4/21
+	 * @since	1.2
+	 *
+	 * @param	void
+	 * @return	void
+	 */
+	public function plugin_activate() { 
+    	// Clear the permalinks
+    	flush_rewrite_rules(); 
+	}
+
 
 	/**
 	 * post_data_check
@@ -81,6 +115,7 @@
 	 * @return	bool
 	 */
 	public function validation($args, $value) {
+		$fail_count = (int) 0;
 		// Max character length
 		if (isset($args['maxlen'])) {
 			if ( strlen($value) > $args['maxlen']) {
@@ -299,4 +334,5 @@
 }
 
 // Load Class
-new LegaleseAnswer;
+$la = new LegaleseAnswer;
+$la->init();
